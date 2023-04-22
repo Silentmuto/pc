@@ -17,7 +17,17 @@ int main()
 	printf("Introduceti biletele de categoria 1 \n");
 	citireStruct(B1,n,RP);
 	printf("Introduceti biletele de categoria 2 \n");
-	afisareStruct(B1,n);
+	citireStruct(B2,n,RP);
+	printf("Prima categorie de bilete \n");	
+afisareStruct(B1,n);
+	printf("A doua categorie de bilete \n");
+	Spectacol* sum1=0,*sum2=0;
+	sum1 = sumaCategorie(B1,n,p1);
+	sum2 = sumaCategorie(B2,n,p2);
+	printf("Incasari prima categorie \n");
+	afisareStruct(sum1,n);
+	printf("Incasari a doua categorie \n");
+	afisareStruct(sum2,n);
 	free(RP);
 	return 0;
 }

@@ -31,7 +31,7 @@ void afisareVector(int* RP,int n)
 	printf("\n");
 
 }
- Spectacol* citireStruct(Spectacol *B,int n,int *RP)
+ void citireStruct(Spectacol *B,int n,int *RP)
 {
 		int i=0;
 		for(i = 0;i < n;i++)
@@ -48,7 +48,6 @@ void afisareVector(int* RP,int n)
 				scanf("%d",&B[i].bilete[j]);
 			}
 		}
-		return B;
 } 
 void afisareStruct(Spectacol *B,int n)
 {
@@ -56,11 +55,32 @@ void afisareStruct(Spectacol *B,int n)
 	int j=0;
 	for(i = 0;i < n;i++)
 	{
-		printf("Piesa %d a avut urmatorul numar de bilete \n",i+1);	
+		printf("Piesa %d \n",i+1);	
 		for(j = 0;j < B[i].nr_reprez;j++)
 		{
 			printf("%d ",B[i].bilete[j]);
 		}
 		printf("\n");
 	}
+}
+Spectacol* sumaCategorie(Spectacol *B,int n,int pret)
+{
+	Spectacol *Sum=0;
+	Sum = (Spectacol*)malloc(n*sizeof(Spectacol));
+	if(Sum == 0)
+	{
+		fprintf(stderr,"Eroare");
+		exit(EXIT_FAILURE);
+	}
+	int i=0,j=0;
+	for(i = 0;i < n;i++)
+	{
+		(Sum+i)->nr_reprez = B[i].nr_reprez;
+		(Sum+i)->bilete = (int*) malloc(n*sizeof(int));
+		for(j = 0;j < (Sum+i)->nr_reprez;j++)
+		{
+			(Sum+i)->bilete[j] = pret* B[i].bilete[j];
+		}
+	}
+	return Sum;
 }
