@@ -28,6 +28,25 @@ afisareStruct(B1,n);
 	afisareStruct(sum1,n);
 	printf("Incasari a doua categorie \n");
 	afisareStruct(sum2,n);
+	Spectacol *sump=0;
+	sump = sumaStructuri(sum1,sum2,n);	
+	int k;
+	afisareSumSpec(sump,n);
+	afisareSumTot(sumaTotala(sum1,sum2,n));
+	dealocareStruct(sump,n);
+	sump = 0;
+	dealocareStruct(sum2,n);
+	sum2 = 0;
+	dealocareStruct(sum1,n);
+	sum1 = 0;
+	for(k = 0;k <  n;k++)
+	{	
+		free(B1[k].bilete);
+		B1[k].bilete = 0;
+		free(B2[k].bilete);
+		B2[k].bilete = 0;
+	}
 	free(RP);
+	RP = 0;
 	return 0;
 }
