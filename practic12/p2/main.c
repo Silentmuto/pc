@@ -10,12 +10,12 @@ int main()
 	scanf("%d",&n);
 	v = citireVecProdus(n);
 	scanf("%d",&m);
-/*	citireVecClient(lclienti,m); */
+	citireVecClient(lclienti,m); 
 
 	printf("Magazinul are %d sortimente de produse \n",n);
 	afisareProdus(v,n);
 	printf("\n");
-/*	afisareClient(lclienti); */
+	afisareClient(lclienti,m); 
 	return 0;
 
 } 
