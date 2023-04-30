@@ -3,7 +3,8 @@
 #include "fct.h"
 
 int main()
-{
+{ 
+	/* ca sa nu introduceti datele de fiecare data,in linia de comanda scrieti (numele programului)<date.in,cazul nostru ./p2<date.in */
 	int n,m,i;
 	PRODUS *v=0;
 	Client lclienti[100];
