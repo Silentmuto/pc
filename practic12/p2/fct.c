@@ -97,5 +97,58 @@ void afisareVecNat(unsigned *vec,int n)
 }	
 	printf(")");
 }	
-
-	
+Client ValComanda(Client cl,PRODUS *prod)
+{
+	cl.valtot = 0;
+	int i;
+	for(i=0;i<cl.nr_sort;i++)
+	{	
+		cl.valtot += prod[cl.id_prod[i]].pret[0] * (double)cl.nr_buc[i];
+	}
+	return cl;
+}
+void afisareValComanda(Client *cl,int m)
+{
+	int i;
+	for(i = 0;i < m;i++)
+	{
+		printf("Valoarea totala a produselor comandate de clientul %.2d este de %.2lf \n",i,cl[i].valtot);
+	}
+}
+double ValTotal(Client *cl,int m)
+{
+	double total =0;
+	int i;
+	for(i=0;i<m;i++)
+	{
+		total += cl[i].valtot;
+	}
+	return total;
+}
+PRODUS *CalcStocuri(PRODUS *prod,Client *cl,int m)
+{
+	int i,j;
+	for(i = 0;i < m;i++)
+	{
+		for(j = 0;j < cl[i].nr_sort;i++)
+		{
+		prod[cl[i].id_prod[j]].stoc -= cl[i].nr_buc[j];
+		}
+	}
+	return prod;
+}
+void Dealocare(PRODUS *v,Client *lclienti,int n,int m)
+{
+	int i;
+	        for(i = 0;i < n;i++)
+        {
+        free(v[i].pret);   
+        v[i].pret = 0;
+        }
+        free(v);
+        for(i = 0;i < m;i++)
+        {
+                free(lclienti[i].id_prod);
+                free(lclienti[i].nr_buc);
+        }
+}
