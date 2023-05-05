@@ -25,4 +25,8 @@ client *citireVecClient(client *cl,int n,int tm);
 client citireClient();
 int *citireVecInt(int dim);
 void afisareClient(client *cl,int nrc,int tm);
-
+void valTotalClient(client *cl,asociatie *asoc,int nr_cl);
+void afisareTotalClient(client *cl,int nr_cl);
+double valTotalComenzi(client *cl,int nr_cl);
+int* cantRamas(asociatie *asoc);
+int *cantTotal(asociatie *asoc,client *cl,int nr_cl);

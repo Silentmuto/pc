@@ -106,3 +106,56 @@ void afisareClient(client *cl,int nrc,int tm)
 		printf("\n");
 	}
 }
+void valTotalClient(client *cl,asociatie *asoc,int nr_cl)
+{
+	int i,j;
+	for(i = 0;i < nr_cl;i++)
+	{
+		for(j = 0;j <asoc->nr_tm;j++)
+		{
+			printf("i =%d j=%d valtot =%lf  \n",i,j,cl[i].valtot);
+			cl[i].valtot += (double)(cl[i].cant_miere[j]) * asoc->vmiere[j].pret;
+		}
+	}
+}
+void afisareTotalClient(client *cl,int nr_cl)
+{
+	int i;
+	for(i=0;i<nr_cl;i++)
+	{
+		printf("Clientul %d a avut o comanda in valoare de %lf \n",i+1,cl[i].valtot);
+	}
+}
+double valTotalComenzi(client *cl,int nr_cl)
+{
+	double total = 0;
+	int i;
+	for(i = 0;i< nr_cl;i++)
+	{
+		total += cl[i].valtot;
+	}
+	return total;
+}
+int *cantTotal(asociatie *asoc,client *cl,int nr_cl)
+{
+	int *total = 0;
+	total = (int*)malloc(asoc->nr_tm * sizeof(int));
+	int i,j;
+	for(i = 0;i < asoc->nr_tm;i++)
+	{
+		for(j = 0;j < nr_cl;j++)
+		{
+			printf("%d kg \n", cl[j].cant_miere[i]);
+			total[i] += cl[j].cant_miere[i];
+		}
+	}
+	return total;
+}
+int *cantRamas(asociatie *asoc,int *total)
+{
+	int i;
+	int *ram = 0;
+	ram = (int*)malloc(asoc->nr_tm * sizeof(int));
+	for(i = 0;i < asoc->nr_tm;i++)
+	{
+		
