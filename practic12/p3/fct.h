@@ -28,5 +28,7 @@ void afisareClient(client *cl,int nrc,int tm);
 void valTotalClient(client *cl,asociatie *asoc,int nr_cl);
 void afisareTotalClient(client *cl,int nr_cl);
 double valTotalComenzi(client *cl,int nr_cl);
-int* cantRamas(asociatie *asoc);
+int* cantRamas(asociatie *asoc,int *total);
 int *cantTotal(asociatie *asoc,client *cl,int nr_cl);
+double* valPerMiere(asociatie *asoc,int *total);
+int totalAsoc(asociatie *asoc);

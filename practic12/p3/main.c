@@ -20,6 +20,23 @@ int main()
 	printf("Valoarea totala a comenzilor este %.2lf \n",valTotalComenzi(cl,nr_cl));
 	int *total = 0;
 	total = cantTotal(asoc,cl,nr_cl);
+	int *ramas;
+	ramas = cantRamas(asoc,total);
+	double *val;
+	val = valPerMiere(asoc,total);
+	int at=0;
+	at = totalAsoc(asoc);
+	int i;
+	for(i = 0;i < asoc->nr_tm;i++)
+	{
+		printf("Pentru tipul %d de miere trebuie sa se incaseze %.2lf lei \n",i,val[i]);
+	}
+	for(i = 0;i < asoc->nr_tm;i++)
+	{
+		printf("Pentru tipul %d de miere reman nevandute %d kg \n",i,ramas[i]);
+	}
+	printf("Asociatia a avut la vanzare %d kg",at);
+	
 	return 0;
 }
 	

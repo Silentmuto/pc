@@ -113,7 +113,6 @@ void valTotalClient(client *cl,asociatie *asoc,int nr_cl)
 	{
 		for(j = 0;j <asoc->nr_tm;j++)
 		{
-			printf("i =%d j=%d valtot =%lf  \n",i,j,cl[i].valtot);
 			cl[i].valtot += (double)(cl[i].cant_miere[j]) * asoc->vmiere[j].pret;
 		}
 	}
@@ -145,7 +144,6 @@ int *cantTotal(asociatie *asoc,client *cl,int nr_cl)
 	{
 		for(j = 0;j < nr_cl;j++)
 		{
-			printf("%d kg \n", cl[j].cant_miere[i]);
 			total[i] += cl[j].cant_miere[i];
 		}
 	}
@@ -158,4 +156,27 @@ int *cantRamas(asociatie *asoc,int *total)
 	ram = (int*)malloc(asoc->nr_tm * sizeof(int));
 	for(i = 0;i < asoc->nr_tm;i++)
 	{
-		
+		ram[i] = asoc->vmiere[i].cant - total[i];
+	}
+	return ram;	
+}
+double *valPerMiere(asociatie *asoc,int *total)
+{
+	double *val=0;
+	val = (double*)malloc(asoc->nr_tm * sizeof(double));
+	int i;
+	for(i = 0;i < asoc->nr_tm;i++)
+	{
+		val[i] = (asoc->vmiere[i].pret) * ((double) total[i]);
+	}
+	return val;	
+}
+int totalAsoc(asociatie *asoc)
+{
+	int i,tot=0;
+	for(i = 0;i < asoc->nr_tm;i++)
+	{
+	tot += asoc->vmiere[i].cant;
+	}
+	return tot;
+}
