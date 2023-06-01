@@ -6,7 +6,7 @@
 
 int main()
 {
-/* ca sa nu introduceti datele de fiecare data,in linia de comanda scrieti (numele programului)<date.in,cazul nostru ./p2<date.in */
+	
 	asociatie *asoc = 0;
 	asoc = citireAsociatie(asoc);
 	afisareAsociatie(asoc);
